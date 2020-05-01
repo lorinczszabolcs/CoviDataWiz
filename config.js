@@ -4,16 +4,16 @@ var config = {
     showMarkers: false,
     theme: 'dark',
     alignment: 'left',
-    title: 'CoviDataWiz',
+    title: 'Confirmed cases per country',
     // subtitle: 'A descriptive and interesting subtitle to draw in the reader',
     // byline: 'By a Digital Storyteller',
     // footer: 'Source: source citations, etc.',
     chapters: [
         {
             id: 'slug-style-id',
-            title: 'Title1',
+            title: 'Hungary',
             // image: './path/to/image/source.png',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            description: 'Placeholder for story about Hungary. Placeholder for story about Hungary. Placeholder for story about Hungary. Placeholder for story about Hungary.',
             location: {
                 center: { lon: 19.43735, lat: 47.20254 },
                 zoom: 6.64,
@@ -35,9 +35,9 @@ var config = {
         },
         {
             id: 'other-identifier',
-            title: 'Second Title',
+            title: 'Germany',
             // image: './path/to/image/source.png',
-            description: 'Copy these sections to add to your story.',
+            description: 'Placeholder for story about Germany. Placeholder for story about Germany. Placeholder for story about Germany. Placeholder for story about Germany.',
             location: {
                 center: { lon: 9.82083, lat: 51.38690 },
                 zoom: 5.76,
@@ -49,12 +49,12 @@ var config = {
         },
         {
             id: 'other-identifier-2',
-            title: 'Third Title',
+            title: 'Italy',
             // image: './path/to/image/source.png',
-            description: 'Copy these sections to add to your story.',
+            description: 'Placeholder for story about Italy. Placeholder for story about Italy. Placeholder for story about Italy. Placeholder for story about Italy.',
             location: {
-                center: { lon: 13.73695, lat: 41.97617 },
-                zoom: 5.76,
+                center: { lon: 13.21679, lat: 42.27144 },
+                zoom: 5.30,
                 pitch: 58.00,
                 bearing: -7.16
             },
