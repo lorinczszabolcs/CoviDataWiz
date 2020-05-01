@@ -41,8 +41,8 @@ var config = {
             location: {
                 center: { lon: 10.34157, lat: 51.02902 },
                 zoom: 5.60,
-                pitch: 0.00,
-                bearing: 0.00
+                pitch: 5.00,
+                bearing: 1.00
             },
             onChapterEnter: [],
             onChapterExit: []
@@ -55,8 +55,8 @@ var config = {
             location: {
                 center: { lon: 14.23296, lat: 41.74773 },
                 zoom: 5.60,
-                pitch: 0.00,
-                bearing: 0.00
+                pitch: 10.00,
+                bearing: 2.00
             },
             onChapterEnter: [],
             onChapterExit: []
