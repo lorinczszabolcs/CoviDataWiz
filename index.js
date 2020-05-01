@@ -34,6 +34,68 @@ function plotConfDeadHungary() {
         parsedData = [confData, deadData]
 
         var layout = {
+            annotations: [
+                {
+                  x: '2020-03-11',
+                  y: 0,
+                  xref: 'x',
+                  yref: 'y',
+                  text: 'Universities will be temporarily closed.',
+                  showarrow: true,
+                  arrowhead: 7,
+                  ax: 0,
+                  ay: -50,
+                  font: {
+                    color: '#ffffff'
+                  }
+                },
+                {
+                    x: '2020-03-17',
+                    y: 0,
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Only Hungarian citizens will be allowed to enter the country.',
+                    showarrow: true,
+                    arrowhead: 7,
+                    ax: 0,
+                    ay: -90,
+                    font: {
+                      color: '#ffffff'
+                    }
+                },
+                {
+                    x: '2020-03-28',
+                    y: 0,
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Restrictions on movement in Hungary.',
+                    showarrow: true,
+                    arrowhead: 7,
+                    ax: 0,
+                    ay: -130,
+                    font: {
+                      color: '#ffffff'
+                    }
+                },
+                {
+                    x: '2020-04-09',
+                    y: 0,
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Movement restrictions extended to further notice.',
+                    showarrow: true,
+                    arrowhead: 7,
+                    ax: 0,
+                    ay: -170,
+                    font: {
+                      color: '#ffffff'
+                    }
+                }
+
+                
+
+            ],
+
             title: {
               text:'Confirmed cases and Deaths',
               font: {
