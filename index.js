@@ -68,8 +68,8 @@ function plotWellBeing() {
               }
             }
           },
-          plot_bgcolor: '#111111',
-          paper_bgcolor: '#111111'
+          plot_bgcolor: '#192440',
+          paper_bgcolor: '#192440'
     };
 
     wellbeing = document.getElementById('wellbeing');
@@ -88,7 +88,8 @@ function plotTurnover() {
           sizemode: 'area',
           line: {
             width: [0, 0, 0, 0]
-          }
+          },
+          opacity: 1
         }
     };
       
@@ -110,8 +111,8 @@ function plotTurnover() {
         },
         showlegend: false,
         height: 600,
-        plot_bgcolor: '#111111',
-        paper_bgcolor: '#111111',
+        plot_bgcolor: '#192440',
+        paper_bgcolor: '#192440',
         yaxis: {
             automargin: true,
             title: {
@@ -200,8 +201,8 @@ function plotBusinessPerformance() {
               }
             }
           },
-          plot_bgcolor: '#111111',
-          paper_bgcolor: '#111111'
+          plot_bgcolor: '#192440',
+          paper_bgcolor: '#192440'
     };
 
     businessPerformanceDiv = document.getElementById('businessPerformance');
@@ -362,8 +363,8 @@ function plotConfEngland() {
                     }
                   }
                 },
-                plot_bgcolor: '#111111',
-                paper_bgcolor: '#111111'
+                plot_bgcolor: '#192440',
+                paper_bgcolor: '#192440'
             };
     
             confUK = document.getElementById('confDeadUK');
