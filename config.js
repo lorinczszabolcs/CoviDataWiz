@@ -4,62 +4,185 @@ var config = {
     showMarkers: false,
     theme: 'dark',
     alignment: 'left',
-    title: 'Confirmed cases per country',
-    // subtitle: 'A descriptive and interesting subtitle to draw in the reader',
-    // byline: 'By a Digital Storyteller',
+    title: 'CoviDataWiz',
+    subtitle: 'Title',
+    // byline: '',
     // footer: 'Source: source citations, etc.',
     chapters: [
         {
-            id: 'slug-style-id',
-            title: 'Hungary',
+            id: 'england',
+            title: 'England and Wales',
             // image: './path/to/image/source.png',
-            description: 'Placeholder for story about Hungary. Placeholder for story about Hungary. Placeholder for story about Hungary. Placeholder for story about Hungary.',
+            description: 'Between 1 March and 17 April 2020, there were 90,232 deaths occurring in England and Wales that were registered by 18 April; 20,283 of these deaths involved the coronavirus (COVID-19).',
             location: {
-                center: { lon: 19.43735, lat: 47.20254 },
-                zoom: 6.64,
-                pitch: 47.00,
-                bearing: -12.00
+                center: { lon: -2.518081, lat: 54.750883 },
+                zoom: 5.13,
+                bearing: -10.71,
+                pitch: 0.00
             },
             onChapterEnter: [
-                // {
-                //     layer: 'layer-name',
-                //     opacity: 1
-                // }
+                {
+                    layer: 'coviddeaths-1',
+                    opacity: 0
+                },
+                {
+                    layer: 'Newham',
+                    opacity: 0
+                },
+                {
+                    layer: 'Brent',
+                    opacity: 0
+                },
+                {
+                    layer: 'Hackney',
+                    opacity: 0
+                },
+                {
+                    layer: 'middle-layer-soa',
+                    opacity: 0
+                }
             ],
             onChapterExit: [
-                // {
-                //     layer: 'layer-name',
-                //     opacity: 0
-                // }
             ]
         },
         {
-            id: 'other-identifier',
-            title: 'Germany',
+            id: 'london',
+            title: 'London',
             // image: './path/to/image/source.png',
-            description: 'Placeholder for story about Germany. Placeholder for story about Germany. Placeholder for story about Germany. Placeholder for story about Germany.',
+            description: 'London had the highest age-standardised mortality rate with 85.7 deaths per 100,000 persons involving COVID-19; this was statistically significantly higher than any other region and almost double the next highest rate.',
             location: {
-                center: { lon: 9.82083, lat: 51.38690 },
-                zoom: 5.76,
-                pitch: 58.00,
-                bearing: -7.16
+                center: { lon: -0.113193, lat: 51.520948 },
+                zoom: 10.21,
+                bearing: -25.60,
+                pitch: 60.00
             },
-            onChapterEnter: [],
+            onChapterEnter: [
+                {
+                    layer: 'coviddeaths-1',
+                    opacity: 1
+                }
+            ],
             onChapterExit: []
         },
         {
-            id: 'other-identifier-2',
-            title: 'Italy',
+            id: 'london-boroughs',
+            title: 'London Boroughs',
             // image: './path/to/image/source.png',
-            description: 'Placeholder for story about Italy. Placeholder for story about Italy. Placeholder for story about Italy. Placeholder for story about Italy.',
+            description: 'The local authorities with the highest age-standardised mortality rates for deaths involving COVID-19 were all London Boroughs: Newham, Brent and Hackney.',
             location: {
-                center: { lon: 13.21679, lat: 42.27144 },
-                zoom: 5.30,
-                pitch: 58.00,
-                bearing: -7.16
+                center: { lon: -0.113193, lat: 51.520948 },
+                zoom: 10.21,
+                bearing: -25.60,
+                pitch: 60.00
             },
-            onChapterEnter: [],
-            onChapterExit: []
+            onChapterEnter: [
+                {
+                    layer: 'coviddeaths-1',
+                    opacity: 1
+                },
+                {
+                    layer: 'Newham',
+                    opacity: 1
+                },
+                {
+                    layer: 'Brent',
+                    opacity: 1
+                },
+                {
+                    layer: 'Hackney',
+                    opacity: 1
+                },
+            ],
+            onChapterExit: [
+                {
+                    layer: 'Brent',
+                    opacity: 0
+                },
+                {
+                    layer: 'Hackney',
+                    opacity: 0
+                },
+                {
+                    layer: 'Newham',
+                    opacity: 0
+                },
+            ]
+        },
+        {
+            id: 'newham',
+            title: 'Newham',
+            // image: './path/to/image/source.png',
+            description: 'Newham had the highest age-standardised rate with 144.3 deaths per 100,000 population.',
+            location: {
+                center: { lon: 0.045091, lat: 51.534672 },
+                zoom: 12.47,
+                bearing: -32.60,
+                pitch: 41.50
+            },
+            onChapterEnter: [
+                {
+                    layer: 'Newham',
+                    opacity: 1
+                },
+                {
+                    layer: 'middle-layer-soa',
+                    opacity: 1
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'Newham',
+                    opacity: 0
+                }
+            ]
+        },
+        {
+            id: 'brent',
+            title: 'Brent',
+            // image: './path/to/image/source.png',
+            description: 'Brent was the second, with a rate of 141.5 deaths per 100,000 population.',
+            location: {
+                center: { lon: -0.267190, lat: 51.548120 },
+                zoom: 12.42,
+                bearing: 21.37,
+                pitch: 41.00
+            },
+            onChapterEnter: [
+                {
+                    layer: 'Brent',
+                    opacity: 1
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'Brent',
+                    opacity: 0
+                }
+            ]
+        },
+        {
+            id: 'hackney',
+            title: 'Hackney',
+            // image: './path/to/image/source.png',
+            description: 'Hackney being the third, with a rate of 127.4 deaths per 100,000 population.',
+            location: {
+                center: { lon: -0.069671, lat: 51.547453 },
+                zoom: 12.92,
+                bearing: 55.80,
+                pitch: 45.00
+            },
+            onChapterEnter: [
+                {
+                    layer: 'Hackney',
+                    opacity: 1
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'Hackney',
+                    opacity: 0
+                }
+            ]
         }
     ]
 };
