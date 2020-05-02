@@ -9,6 +9,7 @@ window.onload = function() {
 }
 
 //#fbe6c5,#f5ba98,#ee8a82,#dc7176,#c8586c,#9c3f5d,#70284a
+// #F5BA98,#EE8A82,#DC7176,#C8586C
 
 function plotWellBeing() {
     var wellBeingData = {
@@ -17,7 +18,7 @@ function plotWellBeing() {
         type: 'bar',
         orientation: 'h',
         marker: {
-            color: '#c8586c'
+            color: '#EE8A82'
         },
         transforms: [{
             type: 'sort',
@@ -82,7 +83,7 @@ function plotTurnover() {
         mode: 'markers',
         marker: {
           size: businessTurnover.sizes,
-          color: ['#70284a','#c8586c','#ee8a82','#fbe6c5'],
+          color: ['#C8586C','#DC7176','#EE8A82','#F5BA98'],
           sizeref: 0.004,
           sizemode: 'area',
           line: {
@@ -103,7 +104,7 @@ function plotTurnover() {
             text: 'In what way was your enterprise\'s turnover within its normal range in the last two weeks?',
             font: {
                 family: 'Arial, monospace',
-                size: 18,
+                size: 28,
                 color: '#ffffff'
             }
         },
@@ -135,6 +136,7 @@ function plotTurnover() {
     Plotly.newPlot(turnover, data, layout);
 }
 
+
 function plotBusinessPerformance() {
     var no = {
         x: businessPerformanceWithinExpectations.businesses,
@@ -142,7 +144,7 @@ function plotBusinessPerformance() {
         name: 'No',
         type: 'bar',
         marker: {
-            color: '#70284a'
+            color: '#C8586C'
         },
         transforms: [{
             type: 'sort',
@@ -157,7 +159,7 @@ function plotBusinessPerformance() {
         name: 'Yes',
         type: 'bar',
         marker: {
-            color: '#c8586c'
+            color: '#EE8A82' 
         }
     };
 
@@ -232,14 +234,14 @@ function plotConfEngland() {
                     deaths.push(tsDeaths[i].cumulativeDeaths);
                 }
             }
-    
+
             var confData = {
                 x: dateConf,
                 y: conf,
                 name: 'Confirmed',
                 type: 'scatter',
                 line: {
-                    color: '#dc7176',
+                    color: '#EE8A82',
                     width: 8
                 }
             };
@@ -250,7 +252,7 @@ function plotConfEngland() {
                 name: 'Deaths',
                 type: 'scatter',
                 line: {
-                    color: '#70284a',
+                    color: '#C8586C',
                     width: 8
                 }
             }
