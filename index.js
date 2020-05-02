@@ -6,6 +6,94 @@ window.onload = function() {
     this.plotBusinessPerformance();
     this.plotTurnover();
     this.plotWellBeing();
+    this.plotHeatMap();
+}
+
+function plotHeatMap() {
+    var data = [
+        {
+          z: concerns.z,
+          x: concerns.worries,
+          y: concerns.groups,
+          type: 'heatmap',
+
+          colorscale: [
+            [0, '#F5BA98'],
+            [0.2, '#EE8A82'],
+            [0.4, '#DC7176'],
+            [0.6, '#C8586C'],
+            [0.8, '#9C3F5D'],
+            [1, '#70284A']
+          ],
+          hoverongaps: false
+        }
+    ];
+      
+    var layout = {
+      plot_bgcolor: '#081732',
+      paper_bgcolor: '#081732',
+      annotations: [],
+
+      font: {
+        family: 'Arial, monospace',
+        size: 16,
+        color: '#ffffff'
+      },
+
+      title: {
+        text:'Ways of worrying about COVID-19 effects of friends and family',
+        font: {
+          family: 'Arial, monospace',
+          size: 32,
+          color: '#ffffff'
+        },
+      },
+
+      yaxis: {
+        automargin: true,
+        tickfont: {
+          family: 'Arial, monospace',
+          color: '#ffffff'
+        }
+      },
+      xaxis: {
+        automargin: true,
+        tickangle: 30,
+        tickfont: {
+            family: 'Arial, monospace',
+            color: '#ffffff'
+        },
+      }
+    }
+
+    for ( var i = 0; i < data[0].y.length; i++ ) {
+      for ( var j = 0; j < data[0].x.length; j++ ) {
+        var currentValue = data[0].z[i][j];
+        if (currentValue != 0.0) {
+          var textColor = 'white';
+        }else{
+          var textColor = 'black';
+        }
+        var result = {
+          xref: 'x1',
+          yref: 'y1',
+          x: data[0].x[j],
+          y: data[0].y[i],
+          text: data[0].z[i][j] + '%',
+          font: {
+            family: 'Arial',
+            color: '#081732',
+            size: 16
+          },
+          showarrow: false
+        };
+        layout.annotations.push(result);
+      }
+    }
+    
+
+    heatMapDiv = document.getElementById('heatMapDiv');
+    Plotly.newPlot(heatMapDiv, data, layout);
 }
 
 function plotWellBeing() {
@@ -21,7 +109,8 @@ function plotWellBeing() {
             type: 'sort',
             target: 'x',
             order: 'ascending'
-        }]
+        }],
+        hoverinfo:"x"
     };
 
     var data = [wellBeingData];
@@ -29,7 +118,7 @@ function plotWellBeing() {
         barmode: 'stack',
         font: {
             family: 'Arial, monospace',
-            size: 12,
+            size: 16,
             color: '#ffffff'
         },
         legend: {
@@ -40,10 +129,10 @@ function plotWellBeing() {
             },
         },
         title: {
-            text:'In the past seven days, how has your well-being being affected?',
+            text:'Effect on well-being',
             font: {
               family: 'Arial, monospace',
-              size: 28,
+              size: 32,
               color: '#ffffff'
             },
           },
@@ -51,7 +140,6 @@ function plotWellBeing() {
             automargin: true,
             tickfont: {
                 family: 'Arial, monospace',
-                size: 14,
                 color: '#ffffff'
             },
           },
@@ -60,7 +148,7 @@ function plotWellBeing() {
               text: 'Percentage',
               font: {
                 family: 'Arial, monospace',
-                size: 18,
+                size: 24,
                 color: '#ffffff'
               }
             }
@@ -81,28 +169,30 @@ function plotTurnover() {
         marker: {
           size: businessTurnover.sizes,
           color: ['#C8586C','#DC7176','#EE8A82','#F5BA98'],
-          sizeref: 0.004,
+          sizeref: 0.001,
           sizemode: 'area',
           line: {
             width: [0, 0, 0, 0]
           },
           opacity: 1
-        }
+        },
+        hoverinfo:"y"
     };
       
     var data = [turnover];
       
     var layout = {
+        hovermode: "x",
         font: {
             family: 'Arial, monospace',
-            size: 12,
+            size: 16,
             color: '#ffffff'
         },
         title: {
-            text: 'In what way was your enterprise\'s turnover within its normal range in the last two weeks?',
+            text: 'Effect on enterprise\'s turnover',
             font: {
                 family: 'Arial, monospace',
-                size: 28,
+                size: 32,
                 color: '#ffffff'
             }
         },
@@ -116,7 +206,7 @@ function plotTurnover() {
                 text: 'Percentage',
                 font: {
                   family: 'Arial, monospace',
-                  size: 18,
+                  size: 24,
                   color: '#ffffff'
                 }
             }
@@ -142,13 +232,15 @@ function plotBusinessPerformance() {
         name: 'No',
         type: 'bar',
         marker: {
-            color: '#C8586C'
+            color: ['#C8586C','#C8586C','#C8586C','#C8586C','#C8586C','#C8586C', '#C8586C','#C8586C','#C8586C','#C8586C','#C8586C','#C8586C','#70284A']
         },
         transforms: [{
             type: 'sort',
             target: 'y',
             order: 'descending'
-          }]
+          }],
+          hovertext:"%",
+          hoverinfo:"y",
     };
       
     var yes = {
@@ -157,8 +249,10 @@ function plotBusinessPerformance() {
         name: 'Yes',
         type: 'bar',
         marker: {
-            color: '#EE8A82' 
-        }
+            color: '#EE8A82'
+        },
+        hovertext:"%",
+        hoverinfo:"y"
     };
 
     var data = [no, yes];
@@ -166,7 +260,7 @@ function plotBusinessPerformance() {
         barmode: 'stack',
         font: {
             family: 'Arial, monospace',
-            size: 12,
+            size: 16,
             color: '#ffffff'
         },
         legend: {
@@ -177,23 +271,28 @@ function plotBusinessPerformance() {
             },
         },
         title: {
-            text:'Was the financial performance of your enterprise within normal expectations in the last two weeks? ',
+            text:'Financial performance of enterprise is within normal expectations',
             font: {
               family: 'Arial, monospace',
-              size: 28,
+              size: 32,
               color: '#ffffff'
             },
           },
           xaxis: {
-            tickangle: 20,
+            tickangle: 30,
             automargin: true
           },
           yaxis: {
+            tickfont: {
+              family: 'Arial, monospace',
+              size: 16,
+              color: '#ffffff'
+            },
             title: {
               text: 'Percentage',
               font: {
                 family: 'Arial, monospace',
-                size: 18,
+                size: 24,
                 color: '#ffffff'
               }
             }
@@ -278,7 +377,7 @@ function plotConfEngland() {
                         ay: -100,
                         font: {
                             color: '#ffffff',
-                            size: 14
+                            size: 18
                         },
                         xanchor:'right'
                     },
@@ -287,17 +386,33 @@ function plotConfEngland() {
                         y: 0,
                         xref: 'x',
                         yref: 'y',
-                        text: 'UK: Schools to close for all except the children of keyworkers and vulnerable children. Nurseries, private schools and sixth forms are also closing.',
+                        text: 'UK: Schools to close for all except the children of keyworkers and vulnerable children.',
                         showarrow: true,
                         arrowhead: 7,
                         ax: 0,
                         ay: -200,
                         font: {
                           color: '#ffffff',
-                          size: 14
+                          size:18
                         },
                         xanchor:'right'
                     },
+                    {
+                      x: '2020-03-20',
+                      y: 0,
+                      xref: 'x',
+                      yref: 'y',
+                      text: 'Nurseries, private schools and sixth forms are also closing.',
+                      showarrow: true,
+                      arrowhead: 7,
+                      ax: 0,
+                      ay: -180,
+                      font: {
+                        color: '#ffffff',
+                        size: 18
+                      },
+                      xanchor:'right'
+                  },
                     {
                         x: '2020-03-24',
                         y: 0,
@@ -310,7 +425,7 @@ function plotConfEngland() {
                         ay: -300,
                         font: {
                           color: '#ffffff',
-                          size: 14
+                          size: 18
                         },
                         xanchor:'right'
                     },
@@ -326,7 +441,7 @@ function plotConfEngland() {
                         ay: -510,
                         font: {
                           color: '#ffffff',
-                          size: 14
+                          size: 18
                         },
                         xanchor:'right'
                     }
@@ -336,7 +451,7 @@ function plotConfEngland() {
                   text:'Number of confirmed cases and deaths in England and measures in the UK',
                   font: {
                     family: 'Arial, monospace',
-                    size: 28,
+                    size: 32,
                     color: '#ffffff'
                   },
                 },
@@ -345,7 +460,7 @@ function plotConfEngland() {
                     text: 'Date',
                     font: {
                       family: 'Arial, monospace',
-                      size: 18,
+                      size: 24,
                       color: '#ffffff'
                     }
                   },
@@ -355,7 +470,7 @@ function plotConfEngland() {
                     text: 'Number of people',
                     font: {
                       family: 'Arial, monospace',
-                      size: 18,
+                      size: 24,
                       color: '#ffffff'
                     }
                   }
