@@ -23,3 +23,20 @@ var businessTurnover = {
     sizes:[63.1, 27.1, 3.7, 4.3]
 }
 
+var wellBeing = {
+    state: [
+        'Spending too much time alone',
+        'Spending too much time with others in household',
+        'No one to talk to about my worries',
+        'Strain on my personal relationships',
+        'Strain on my work relationships',
+        'Feeling stressed or anxious',
+        'Feeling bored',
+        'Feeling lonely',
+        'Finding working from home difficult',
+        'Making my mental health worse',
+        'Unable to exercise as normal',
+        'Feeling worried about the future'
+    ],
+    percentage: [23.5, 20.2, 12.3, 21.5, 8.5, 65.1, 47.1, 27.5, 18.2, 21.2, 48.4,69.3]
+}

@@ -1,9 +1,78 @@
-var apiConfDeadHungary = 'https://api.covid19api.com/dayone/country/hungary'
+var apiConfEngland = 'https://c19downloads.azureedge.net/downloads/json/coronavirus-cases_latest.json'
+var apiDeathsEngland = 'https://c19downloads.azureedge.net/downloads/json/coronavirus-deaths_latest.json'
 
 window.onload = function() {
-    //this.plotConfDeadHungary();
+    this.plotConfEngland();
     this.plotBusinessPerformance();
     this.plotTurnover();
+    this.plotWellBeing();
+}
+
+//#fbe6c5,#f5ba98,#ee8a82,#dc7176,#c8586c,#9c3f5d,#70284a
+
+function plotWellBeing() {
+    var wellBeingData = {
+        x: wellBeing.percentage,
+        y: wellBeing.state,
+        type: 'bar',
+        orientation: 'h',
+        marker: {
+            color: '#c8586c'
+        },
+        transforms: [{
+            type: 'sort',
+            target: 'x',
+            order: 'ascending'
+        }]
+    };
+
+    var data = [wellBeingData];
+    var layout = {
+        barmode: 'stack',
+        font: {
+            family: 'Arial, monospace',
+            size: 12,
+            color: '#ffffff'
+        },
+        legend: {
+            font: {
+              family: 'Arial, monospace',
+              size: 24,
+              color: '#ffffff'
+            },
+        },
+        title: {
+            text:'In the past seven days, how has your well-being being affected?',
+            font: {
+              family: 'Arial, monospace',
+              size: 28,
+              color: '#ffffff'
+            },
+          },
+          yaxis: {
+            automargin: true,
+            tickfont: {
+                family: 'Arial, monospace',
+                size: 14,
+                color: '#ffffff'
+            },
+          },
+          xaxis: {
+            title: {
+              text: 'Percentage',
+              font: {
+                family: 'Arial, monospace',
+                size: 18,
+                color: '#ffffff'
+              }
+            }
+          },
+          plot_bgcolor: '#111111',
+          paper_bgcolor: '#111111'
+    };
+
+    wellbeing = document.getElementById('wellbeing');
+    Plotly.newPlot(wellbeing, data, layout);
 }
 
 function plotTurnover() {
@@ -13,8 +82,8 @@ function plotTurnover() {
         mode: 'markers',
         marker: {
           size: businessTurnover.sizes,
-          color: ['#9e2121','#eb9334','#ebe534','#309e21'],
-          sizeref: 0.01,
+          color: ['#70284a','#c8586c','#ee8a82','#fbe6c5'],
+          sizeref: 0.004,
           sizemode: 'area',
           line: {
             width: [0, 0, 0, 0]
@@ -39,7 +108,6 @@ function plotTurnover() {
             }
         },
         showlegend: false,
-        width: 800,
         height: 600,
         plot_bgcolor: '#111111',
         paper_bgcolor: '#111111',
@@ -74,7 +142,7 @@ function plotBusinessPerformance() {
         name: 'No',
         type: 'bar',
         marker: {
-            color: '#5c0b0b'
+            color: '#70284a'
         },
         transforms: [{
             type: 'sort',
@@ -89,7 +157,7 @@ function plotBusinessPerformance() {
         name: 'Yes',
         type: 'bar',
         marker: {
-            color: '#118080'
+            color: '#c8586c'
         }
     };
 
@@ -138,130 +206,166 @@ function plotBusinessPerformance() {
     Plotly.newPlot(businessPerformanceDiv, data, layout);
 }
 
-function plotConfDeadHungary() {
-    fetch(apiConfDeadHungary)
-    .then(response => response.json())
-    .then(data => {
-        date = []
-        conf = []
-        dead = []
+function plotConfEngland() {
+    fetch(apiConfEngland)
+    .then(responseConf => responseConf.json())
+    .then(confData => {
+        tsConf = confData.countries
+        fetch(apiDeathsEngland)
+        .then(responseDeaths => responseDeaths.json())
+        .then(deathsData => {
+            tsDeaths = deathsData.countries
+            dateConf = []
+            conf = []
+            dateDeaths = []
+            deaths = []
 
-        for (i = 0; i < data.length - 1; i++) {
-            date.push(data[i].Date.split('T')[0]);
-            console.log(date[i])
-            conf.push(data[i].Confirmed);
-            dead.push(data[i].Deaths)
-        }
+            for (i = 0; i < tsConf.length; i++) {
+                if(tsConf[i].areaName === 'England') {
+                    dateConf.push(tsConf[i].specimenDate);
+                    conf.push(tsConf[i].totalLabConfirmedCases);
+                }
+            }
+            for (i = 0; i < tsDeaths.length; i++) {
+                if(tsDeaths[i].areaName === 'England') {
+                    dateDeaths.push(tsDeaths[i].reportingDate);
+                    deaths.push(tsDeaths[i].cumulativeDeaths);
+                }
+            }
+    
+            var confData = {
+                x: dateConf,
+                y: conf,
+                name: 'Confirmed',
+                type: 'scatter',
+                line: {
+                    color: '#dc7176',
+                    width: 8
+                }
+            };
+    
+            var deathsData = {
+                x: dateDeaths,
+                y: deaths,
+                name: 'Deaths',
+                type: 'scatter',
+                line: {
+                    color: '#70284a',
+                    width: 8
+                }
+            }
+    
+            parsedData = [confData, deathsData]
 
-        var confData = {
-            x: date,
-            y: conf,
-            name: 'Confirmed',
-            type: 'scatter'
-        };
-        var deadData = {
-            x: date,
-            y: dead,
-            name: 'Deaths',
-            type: 'scatter'
-        };
-        parsedData = [confData, deadData]
-
-        var layout = {
-            annotations: [
-                {
-                  x: '2020-03-11',
-                  y: 0,
-                  xref: 'x',
-                  yref: 'y',
-                  text: 'Universities will be temporarily closed.',
-                  showarrow: true,
-                  arrowhead: 7,
-                  ax: 0,
-                  ay: -50,
+            var layout = {
+                legend: {
+                    font: {
+                      family: 'Arial, monospace',
+                      size: 24,
+                      color: '#ffffff'
+                    },
+                },
+                annotations: [
+                    {
+                        x: '2020-03-15',
+                        y: 0,
+                        xref: 'x',
+                        yref: 'y',
+                        text: 'UK: 7 day self-quarantine for those with cough or fever.',
+                        showarrow: true,
+                        arrowhead: 7,
+                        ax: 0,
+                        ay: -100,
+                        font: {
+                            color: '#ffffff',
+                            size: 14
+                        },
+                        xanchor:'right'
+                    },
+                    {
+                        x: '2020-03-20',
+                        y: 0,
+                        xref: 'x',
+                        yref: 'y',
+                        text: 'UK: Schools to close for all except the children of keyworkers and vulnerable children. Nurseries, private schools and sixth forms are also closing.',
+                        showarrow: true,
+                        arrowhead: 7,
+                        ax: 0,
+                        ay: -200,
+                        font: {
+                          color: '#ffffff',
+                          size: 14
+                        },
+                        xanchor:'right'
+                    },
+                    {
+                        x: '2020-03-24',
+                        y: 0,
+                        xref: 'x',
+                        yref: 'y',
+                        text: 'UK: All social events will be stopped excluding funerals',
+                        showarrow: true,
+                        arrowhead: 7,
+                        ax: 0,
+                        ay: -300,
+                        font: {
+                          color: '#ffffff',
+                          size: 14
+                        },
+                        xanchor:'right'
+                    },
+                    {
+                        x: '2020-04-16',
+                        y: 0,
+                        xref: 'x',
+                        yref: 'y',
+                        text: 'UK: The UK extends its lockdown for at least another 3 weeks.',
+                        showarrow: true,
+                        arrowhead: 7,
+                        ax: 0,
+                        ay: -510,
+                        font: {
+                          color: '#ffffff',
+                          size: 14
+                        },
+                        xanchor:'right'
+                    }
+                ],
+    
+                title: {
+                  text:'Number of confirmed cases and deaths in England and measures in the UK',
                   font: {
+                    family: 'Arial, monospace',
+                    size: 28,
                     color: '#ffffff'
+                  },
+                },
+                xaxis: {
+                  title: {
+                    text: 'Date',
+                    font: {
+                      family: 'Arial, monospace',
+                      size: 18,
+                      color: '#ffffff'
+                    }
+                  },
+                },
+                yaxis: {
+                  title: {
+                    text: 'Number of people',
+                    font: {
+                      family: 'Arial, monospace',
+                      size: 18,
+                      color: '#ffffff'
+                    }
                   }
                 },
-                {
-                    x: '2020-03-17',
-                    y: 0,
-                    xref: 'x',
-                    yref: 'y',
-                    text: 'Only Hungarian citizens will be allowed to enter the country.',
-                    showarrow: true,
-                    arrowhead: 7,
-                    ax: 0,
-                    ay: -90,
-                    font: {
-                      color: '#ffffff'
-                    }
-                },
-                {
-                    x: '2020-03-28',
-                    y: 0,
-                    xref: 'x',
-                    yref: 'y',
-                    text: 'Restrictions on movement in Hungary.',
-                    showarrow: true,
-                    arrowhead: 7,
-                    ax: 0,
-                    ay: -130,
-                    font: {
-                      color: '#ffffff'
-                    }
-                },
-                {
-                    x: '2020-04-09',
-                    y: 0,
-                    xref: 'x',
-                    yref: 'y',
-                    text: 'Movement restrictions extended to further notice.',
-                    showarrow: true,
-                    arrowhead: 7,
-                    ax: 0,
-                    ay: -170,
-                    font: {
-                      color: '#ffffff'
-                    }
-                }
-            ],
-
-            title: {
-              text:'Confirmed cases and Deaths',
-              font: {
-                family: 'Arial, monospace',
-                size: 28,
-                color: '#ffffff'
-              },
-            },
-            xaxis: {
-              title: {
-                text: 'Date',
-                font: {
-                  family: 'Arial, monospace',
-                  size: 18,
-                  color: '#ffffff'
-                }
-              },
-            },
-            yaxis: {
-              title: {
-                text: 'Number of people',
-                font: {
-                  family: 'Arial, monospace',
-                  size: 18,
-                  color: '#ffffff'
-                }
-              }
-            },
-            plot_bgcolor: '#111111',
-            paper_bgcolor: '#111111'
-        };
-
-        confDeadHungary = document.getElementById('confDeadHungary');
-        Plotly.newPlot(confDeadHungary, parsedData, layout);
-    });
-
+                plot_bgcolor: '#111111',
+                paper_bgcolor: '#111111'
+            };
     
+            confUK = document.getElementById('confDeadUK');
+            Plotly.newPlot(confUK, parsedData, layout);
+        });}
+    )
 }
