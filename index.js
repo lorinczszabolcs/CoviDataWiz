@@ -41,7 +41,7 @@ function plotHeatMap() {
       },
 
       title: {
-        text:'Ways of worrying about COVID-19 effects of friends and family',
+        text:'Ways of worrying about COVID-19 effects on friends and family',
         font: {
           family: "'Raleway', sans-serif",
           size: 32,
@@ -79,10 +79,11 @@ function plotHeatMap() {
           yref: 'y1',
           x: data[0].x[j],
           y: data[0].y[i],
-          text: data[0].z[i][j] + '%',
+          text: '<b>'+ data[0].z[i][j] + '%</b>',
           font: {
             family: "'Raleway', sans-serif",
             color: '#081732',
+
             size: 16
           },
           showarrow: false
@@ -144,6 +145,7 @@ function plotWellBeing() {
             },
           },
           xaxis: {
+            range: [0, 100],
             title: {
               text: 'Percentage',
               font: {
@@ -164,7 +166,7 @@ function plotWellBeing() {
 function plotTurnover() {
     var turnover = {
         x: businessTurnover.turnover,
-        y: businessTurnover.sizes,
+        y: [0,0,0,0],
         mode: 'markers',
         marker: {
           size: businessTurnover.sizes,
@@ -176,7 +178,8 @@ function plotTurnover() {
           },
           opacity: 1
         },
-        hoverinfo:"y"
+        hoverinfo:"text",
+        hovertext: businessTurnover.sizes
     };
       
     var data = [turnover];
@@ -189,7 +192,7 @@ function plotTurnover() {
             color: '#ffffff'
         },
         title: {
-            text: 'Effect on enterprise\'s turnover',
+            text: 'Effect on enterprises\' turnover',
             font: {
                 family: "'Raleway', sans-serif",
                 size: 32,
@@ -202,14 +205,7 @@ function plotTurnover() {
         paper_bgcolor: '#081732',
         yaxis: {
             automargin: true,
-            title: {
-                text: 'Percentage',
-                font: {
-                  family: "'Raleway', sans-serif",
-                  size: 24,
-                  color: '#ffffff'
-                }
-            }
+            showticklabels:false
         },
         xaxis: {
             tickfont: {
