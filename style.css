@@ -1,4 +1,7 @@
-@charset "utf-8";
-body {
-    background-color: '#1b224a' !important;
-}
+html {
+    overflow:   scroll;
+  }
+  ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+  }
