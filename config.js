@@ -4,8 +4,8 @@ var config = {
     showMarkers: false,
     theme: 'dark',
     alignment: 'left',
-    title: 'CoviDataWiz',
-    subtitle: 'Title',
+    title: 'COVID-19 related deaths in England and Wales',
+    // subtitle: 'Title',
     // byline: '',
     footer: 'Source: Office for National Statistics licensed under the Open Government Licence v.3.0,\
              Contains OS data © Crown copyright and database right 2020,\
