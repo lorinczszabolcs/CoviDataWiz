@@ -35,7 +35,7 @@ function plotHeatMap() {
       annotations: [],
 
       font: {
-        family: 'Arial, monospace',
+        family: "'Raleway', sans-serif",
         size: 16,
         color: '#ffffff'
       },
@@ -43,7 +43,7 @@ function plotHeatMap() {
       title: {
         text:'Ways of worrying about COVID-19 effects of friends and family',
         font: {
-          family: 'Arial, monospace',
+          family: "'Raleway', sans-serif",
           size: 32,
           color: '#ffffff'
         },
@@ -52,7 +52,7 @@ function plotHeatMap() {
       yaxis: {
         automargin: true,
         tickfont: {
-          family: 'Arial, monospace',
+          family: "'Raleway', sans-serif",
           color: '#ffffff'
         }
       },
@@ -60,7 +60,7 @@ function plotHeatMap() {
         automargin: true,
         tickangle: 30,
         tickfont: {
-            family: 'Arial, monospace',
+            family: "'Raleway', sans-serif",
             color: '#ffffff'
         },
       }
@@ -81,7 +81,7 @@ function plotHeatMap() {
           y: data[0].y[i],
           text: data[0].z[i][j] + '%',
           font: {
-            family: 'Arial',
+            family: "'Raleway', sans-serif",
             color: '#081732',
             size: 16
           },
@@ -117,13 +117,13 @@ function plotWellBeing() {
     var layout = {
         barmode: 'stack',
         font: {
-            family: 'Arial, monospace',
+            family: "'Raleway', sans-serif",
             size: 16,
             color: '#ffffff'
         },
         legend: {
             font: {
-              family: 'Arial, monospace',
+              family: "'Raleway', sans-serif",
               size: 24,
               color: '#ffffff'
             },
@@ -131,7 +131,7 @@ function plotWellBeing() {
         title: {
             text:'Effect on well-being',
             font: {
-              family: 'Arial, monospace',
+              family: "'Raleway', sans-serif",
               size: 32,
               color: '#ffffff'
             },
@@ -139,7 +139,7 @@ function plotWellBeing() {
           yaxis: {
             automargin: true,
             tickfont: {
-                family: 'Arial, monospace',
+                family: "'Raleway', sans-serif",
                 color: '#ffffff'
             },
           },
@@ -147,7 +147,7 @@ function plotWellBeing() {
             title: {
               text: 'Percentage',
               font: {
-                family: 'Arial, monospace',
+                family: "'Raleway', sans-serif",
                 size: 24,
                 color: '#ffffff'
               }
@@ -184,14 +184,14 @@ function plotTurnover() {
     var layout = {
         hovermode: "x",
         font: {
-            family: 'Arial, monospace',
+            family: "'Raleway', sans-serif",
             size: 16,
             color: '#ffffff'
         },
         title: {
             text: 'Effect on enterprise\'s turnover',
             font: {
-                family: 'Arial, monospace',
+                family: "'Raleway', sans-serif",
                 size: 32,
                 color: '#ffffff'
             }
@@ -205,7 +205,7 @@ function plotTurnover() {
             title: {
                 text: 'Percentage',
                 font: {
-                  family: 'Arial, monospace',
+                  family: "'Raleway', sans-serif",
                   size: 24,
                   color: '#ffffff'
                 }
@@ -213,7 +213,7 @@ function plotTurnover() {
         },
         xaxis: {
             tickfont: {
-                family: 'Arial, monospace',
+                family: "'Raleway', sans-serif",
                 size: 16,
                 color: '#ffffff'
             },
@@ -259,13 +259,13 @@ function plotBusinessPerformance() {
     var layout = {
         barmode: 'stack',
         font: {
-            family: 'Arial, monospace',
+            family: "'Raleway', sans-serif",
             size: 16,
             color: '#ffffff'
         },
         legend: {
             font: {
-              family: 'Arial, monospace',
+              family: "'Raleway', sans-serif",
               size: 24,
               color: '#ffffff'
             },
@@ -273,7 +273,7 @@ function plotBusinessPerformance() {
         title: {
             text:'Financial performance of enterprise is within normal expectations',
             font: {
-              family: 'Arial, monospace',
+              family: "'Raleway', sans-serif",
               size: 32,
               color: '#ffffff'
             },
@@ -284,14 +284,14 @@ function plotBusinessPerformance() {
           },
           yaxis: {
             tickfont: {
-              family: 'Arial, monospace',
+              family: "'Raleway', sans-serif",
               size: 16,
               color: '#ffffff'
             },
             title: {
               text: 'Percentage',
               font: {
-                family: 'Arial, monospace',
+                family: "'Raleway', sans-serif",
                 size: 24,
                 color: '#ffffff'
               }
@@ -359,7 +359,7 @@ function plotConfEngland() {
             var layout = {
                 legend: {
                     font: {
-                      family: 'Arial, monospace',
+                      family: "'Raleway', sans-serif",
                       size: 24,
                       color: '#ffffff'
                     },
@@ -377,6 +377,7 @@ function plotConfEngland() {
                         ay: -100,
                         font: {
                             color: '#ffffff',
+                            family: "'Raleway', sans-serif",
                             size: 18
                         },
                         xanchor:'right'
@@ -393,6 +394,7 @@ function plotConfEngland() {
                         ay: -200,
                         font: {
                           color: '#ffffff',
+                          family: "'Raleway', sans-serif",
                           size:18
                         },
                         xanchor:'right'
@@ -409,6 +411,7 @@ function plotConfEngland() {
                       ay: -180,
                       font: {
                         color: '#ffffff',
+                        family: "'Raleway', sans-serif",
                         size: 18
                       },
                       xanchor:'right'
@@ -425,6 +428,7 @@ function plotConfEngland() {
                         ay: -300,
                         font: {
                           color: '#ffffff',
+                          family: "'Raleway', sans-serif",
                           size: 18
                         },
                         xanchor:'right'
@@ -441,6 +445,7 @@ function plotConfEngland() {
                         ay: -510,
                         font: {
                           color: '#ffffff',
+                          family: "'Raleway', sans-serif",
                           size: 18
                         },
                         xanchor:'right'
@@ -450,7 +455,7 @@ function plotConfEngland() {
                 title: {
                   text:'Number of confirmed cases and deaths in England and measures in the UK',
                   font: {
-                    family: 'Arial, monospace',
+                    family: "'Raleway', sans-serif",
                     size: 32,
                     color: '#ffffff'
                   },
@@ -459,7 +464,7 @@ function plotConfEngland() {
                   title: {
                     text: 'Date',
                     font: {
-                      family: 'Arial, monospace',
+                      family: "'Raleway', sans-serif",
                       size: 24,
                       color: '#ffffff'
                     }
@@ -469,7 +474,7 @@ function plotConfEngland() {
                   title: {
                     text: 'Number of people',
                     font: {
-                      family: 'Arial, monospace',
+                      family: "'Raleway', sans-serif",
                       size: 24,
                       color: '#ffffff'
                     }
