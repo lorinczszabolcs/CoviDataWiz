@@ -185,6 +185,18 @@ var config = {
                     opacity: 0
                 }
             ]
+        },
+        {
+            id: 'end',
+            title: 'Thank you!',
+            location: {
+                center: { lon: -2.518081, lat: 54.750883 },
+                zoom: 5.13,
+                bearing: -10.71,
+                pitch: 0.00
+            },
+            onChapterEnter: [],
+            onChapterExit: []
         }
     ]
 };
