@@ -167,6 +167,7 @@ function plotTurnover() {
     var turnover = {
         x: businessTurnover.turnover,
         y: [0,0,0,0],
+        s: businessTurnover.sizes,
         mode: 'markers',
         marker: {
           size: businessTurnover.sizes,
@@ -185,6 +186,7 @@ function plotTurnover() {
     var data = [turnover];
       
     var layout = {
+        annotations: [],
         hovermode: "x",
         font: {
             family: "'Raleway', sans-serif",
@@ -215,6 +217,30 @@ function plotTurnover() {
             },
         }
     };
+
+      for ( var j = 0; j < turnover.x.length; j++ ) {
+        var currentValue = turnover.s[j]
+        if (currentValue != 0.0) {
+          var textColor = 'white';
+        }else{
+          var textColor = 'black';
+        }
+        var result = {
+          xref: 'x1',
+          yref: 'y1',
+          x:turnover.x[j],
+          y: 0,
+          text: '<b>'+ currentValue + '%</b>',
+          font: {
+            family: "'Raleway', sans-serif",
+            color: '#081732',
+
+            size: 26
+          },
+          showarrow: false
+        };
+        layout.annotations.push(result);
+      }
       
     turnover = document.getElementById('turnover');
     Plotly.newPlot(turnover, data, layout);
