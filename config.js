@@ -195,7 +195,28 @@ var config = {
                 bearing: -10.71,
                 pitch: 0.00
             },
-            onChapterEnter: [],
+            onChapterEnter: [
+                {
+                    layer: 'coviddeaths-1',
+                    opacity: 0
+                },
+                {
+                    layer: 'Newham',
+                    opacity: 0
+                },
+                {
+                    layer: 'Brent',
+                    opacity: 0
+                },
+                {
+                    layer: 'Hackney',
+                    opacity: 0
+                },
+                {
+                    layer: 'middle-layer-soa',
+                    opacity: 0
+                }
+            ],
             onChapterExit: []
         }
     ]
